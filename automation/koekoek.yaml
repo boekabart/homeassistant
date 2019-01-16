@@ -20,11 +20,11 @@
 
   condition:
     - condition: time
-      after: '17:44:00'
-      before: '19:29:00'
+      after: '06:50:00'
+      before: '22:31:00'
     - condition: template
       value_template: >
-        {% if is_state('media_player.mini_me', 'playing') %}
+        {% if is_state('media_player.marshall', 'playing') %}
           false
         {% else %}
           true
@@ -33,12 +33,12 @@
   action:
     - service: media_player.volume_set
       data_template:
-        entity_id: media_player.mini_me
+        entity_id: media_player.marshall
         volume_level: 0.5
       
     - service: media_player.play_media
       data_template:
-        entity_id: media_player.mini_me
+        entity_id: media_player.marshall
         media_content_id: >
           {% if now().strftime("%M")|int != 0 %}
           https://raw.githubusercontent.com/CCOSTAN/Home-AssistantConfig/master/config/sounds/cuckoo-clock-01.wav
